@@ -5,10 +5,6 @@ const get = (target) => {
 export default function Calendar () {
   const $selectedMonth = get('.selected-month')
   const $selectedYear = get('.selected-year')
-  // const $dates = get('.dates')
-
-  // const $currentDate = get('.currentDate')
-
   const $days = get('.days')
   const months = [
     'January',
@@ -29,7 +25,6 @@ export default function Calendar () {
 
   const renderCalendar = () => {
     date.setDate(1) // 찾아보기
-    //   const day = date.getDate()
     const month = date.getMonth()
     const year = date.getFullYear()
     const lastDay = new Date(year, month + 1, 0).getDate()
@@ -38,9 +33,8 @@ export default function Calendar () {
     const lastDayIndex = new Date(year, month + 1, 0).getDay() // 현재 달 마지막 요일
     const nextDays = 7 - lastDayIndex - 1
 
-    // 위에 현재 날짜 표시
-    $selectedMonth.innerHTML = months[month]
-    $selectedYear.innerHTML = year
+    $selectedMonth.textContent = months[month]
+    $selectedYear.textContent = year
 
     const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
@@ -56,7 +50,7 @@ export default function Calendar () {
       $days.appendChild($dayNamesFragment)
     }
 
-    // 달력에 날짜 숫자 표시
+    // 달력에 날짜(숫자) 표시
     const showDates = () => {
       $days.innerHTML = ''
       createDayNames()
@@ -67,10 +61,10 @@ export default function Calendar () {
       }
 
       for (let j = 1; j <= lastDay; j++) {
-        // 오늘 날짜인 경우
+        // 오늘인 경우
         if (
           j === new Date().getDate() &&
-                      date.getMonth() === new Date().getMonth()
+                      date.getMonth() === new Date().getMonth() && date.getFullYear() === new Date().getFullYear()
         ) {
           if (new Date(year, month, j).getDay() === 0) {
             days += `<div class="day today sunday">${j}</div>`

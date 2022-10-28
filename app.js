@@ -26,6 +26,7 @@ const showPrevMonth = (e) => {
   renderCalendar()
 }
 
+// 날짜 선택 시 표시
 const logSelectedDay = (e) => {
   if (e.target.className !== 'day') return
   const $clickedDate = e.target
@@ -33,9 +34,9 @@ const logSelectedDay = (e) => {
   const m = (date.getMonth() + 1).toString().padStart(2, '0')
   const d = e.target.innerHTML.padStart(2, '0')
   const selectedDate = `${y}-${m}-${d}`
-  console.log(selectedDate) // 로그 찍기
-  $datePicker.value = selectedDate // 데이트 피커에 날짜 표시
-  $calendar.classList.toggle('active')
+  console.log(selectedDate)
+  $datePicker.value = selectedDate
+  $calendar.classList.remove('active')
 
   // 선택되어 있는 경우 삭제
   const $prevSelected = get('.days .day.selected')
@@ -55,12 +56,9 @@ const closeCalendar = (e) => {
   if (!e.target.classList.contains('body')) return
   $calendar.classList.remove('active')
 }
-
-// 이벤트 리스너
+$datePicker.addEventListener('click', toggleCalendar)
+$body.addEventListener('click', closeCalendar)
 $nextMonthBtn.addEventListener('click', showNextMonth)
 $prevMonthBtn.addEventListener('click', showPrevMonth)
 $days.addEventListener('click', logSelectedDay)
-
-$datePicker.addEventListener('click', toggleCalendar)
-$body.addEventListener('click', closeCalendar)
 renderCalendar()
