@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- html 검사하기 -->
+<html lang="ko-kr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Date Picker</title>
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=block"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/css/style.css" />
+        <script type="module" src="./app.js"></script>
+    </head>
+    <body class="body">
+        <h1 class="title">Date Picker</h1>
+        <!-- 데이트 피커 -->
+        <label for="date-picker"></label>
+        <input
+            type="text"
+            class="date-picker"
+            id="date-picker"
+            readonly
+            placeholder="Select date"
+        />
+
+        <!-- 캘린더 컨테이너 -->
+        <div class="calendar">
+            <div class="calendar-nav">
+                <i class="bx bxs-left-arrow arrow prev"></i>
+                <div class="selected-date">
+                    <span class="selected-month"></span>
+                    <span class="selected-year"></span>
+                </div>
+                <i class="bx bxs-right-arrow arrow next"></i>
+            </div>
+
+            <!-- 클릭 시 열리는 드롭다운 -->
+            <div class="dates calender-grid">
+                <div class="days"></div>
+            </div>
+        </div>
+
+       
+    </body>
+</html>
